@@ -1,6 +1,9 @@
 #!/bin/bash
 
 export AWS_PROFILE=personal
+export TF_VAR_aws_access_key=
+export TF_VAR_aws_secret_key=
+
 
 echo "Building stack"
 echo "Run with  plan/apply/destroy/init as a switch"
