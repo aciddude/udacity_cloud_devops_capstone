@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: udacity-weather-app
+  namespace: udacity-weather-app
+  annotations:
+   external-dns.alpha.kubernetes.io/hostname: weather.pools.ac
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: udacity-weather-app
