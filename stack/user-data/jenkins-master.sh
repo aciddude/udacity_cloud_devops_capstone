@@ -12,9 +12,16 @@ wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
 
 rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 
+yum install git docker  -y
+systemctl start docker
+systemctl enable docker
 yum install jenkins -y
 
+sudo usermod -aG docker jenkins
+
 service jenkins start
+
+
 
 sleep 30
 

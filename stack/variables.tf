@@ -16,6 +16,12 @@ variable owner {
 }
 
 
+variable domain {
+  default = "pools.com"
+}
+
+
+
 variable route53_zone_id {
   default = ""
   description = "Route53 DNS Zone ID"

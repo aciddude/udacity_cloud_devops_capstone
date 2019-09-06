@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export AWS_PROFILE=personal
-export TF_VAR_aws_access_key=
-export TF_VAR_aws_secret_key=
+export TF_VAR_aws_access_key=AKIASBMFY7Z2O3XNRZEU
+export TF_VAR_aws_secret_key=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
 
 
 echo "Building stack"
@@ -17,7 +17,7 @@ fi
 
 if [ $1 == "plan" ]
   then
-      terraform plan  -var-file=./stack/dev.tfvars ./stack/
+      terraform plan  -var-file=./dev.tfvars ./stack/
       pwd
 fi
 
@@ -25,7 +25,7 @@ fi
 if [ $1 == "apply" ]
   then
       export AWS_PROFILE=personal
-      terraform apply -var-file=./stack/dev.tfvars  -auto-approve ./stack/
+      terraform apply -var-file=./dev.tfvars  -auto-approve ./stack/
 
       echo "Applying KubeCTL config"
       terraform output eks-kubeconfig > ${HOME}/.kube/config
@@ -68,6 +68,6 @@ if [ $1 == "destroy" ]
       kubectl delete -f ./stack/k8s-templates/webapp/webapp-namespace.yml
 
       echo "DESTROYING INFRASTRUCTURE!!"
-      terraform destroy -var-file=./stack/dev.tfvars  -auto-approve ./stack/
+      terraform destroy -var-file=./dev.tfvars  -auto-approve ./stack/
       pwd
 fi

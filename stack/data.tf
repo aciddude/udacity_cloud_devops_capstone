@@ -60,3 +60,16 @@ resource "local_file" "webapp-ingress" {
     content     = "${data.template_file.webapp-ingress.rendered}"
     filename = "${path.module}/k8s-templates/webapp/webapp-ingress.yml"
 }
+
+
+data "template_file" "external-dns" {
+  template = "${file("${path.module}/k8s-templates/external-dns.tpl")}"
+  vars = {
+    domain   = "${var.domain}"
+  }
+}
+
+resource "local_file" "external-dns" {
+    content     = "${data.template_file.external-dns.rendered}"
+    filename = "${path.module}/k8s-templates/external-dns.yml"
+}
