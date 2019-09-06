@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export AWS_PROFILE=personal
-export TF_VAR_aws_access_key=AKIASBMFY7Z2O3XNRZEU
-export TF_VAR_aws_secret_key=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
+export TF_VAR_aws_access_key=
+export TF_VAR_aws_secret_key=
 
 
 echo "Building stack"
